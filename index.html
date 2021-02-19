@@ -49,7 +49,7 @@
 
        if (year < 1998) {
          document.getElementById("result").innerHTML = `the year ${year} AD was prehistory`;
-       } else if (year == 1998 || year == 2003 || ((year - 2011) % 3 == 0)) {
+       } else if (year == 1998 || year == 2003 || (year >= 2011 && (year - 2011) % 3 == 0)) {
          document.getElementById("result").innerHTML = `the year ${year} AD <b>${verb}</b> an ISO C++ release year`;
        } else {
          document.getElementById("result").innerHTML = `the year ${year} AD <b>${notVerb}</b> an ISO C++ release year`;
