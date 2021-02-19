@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ISO Standard C++ Ship Year</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+    <!-- see http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1">
+
+    <style>
+     #result {
+       font-size: 32px;
+     }
+    </style>
+  </head>
+  <body>
+    <h1>Which year is an ISO C++ release year?</h1>
+
+    Year: <input type="text" id="year" name="year" value="2011"> AD <br>
+
+    <p>Click "submit" to see whether the year is an ISO C++ release year.</p>
+    <button onclick="submit()">Submit</button>
+
+    <p id="message"></p>
+    <p id="result"></p>
+
+    <script>
+     function submit(event) {
+       document.getElementById("result").innerHTML = "";
+       let year = document.getElementById("year").value;
+       if(!year.match(/^\d+$/)){
+         document.getElementById("message").innerHTML = `${year} is not a valid year`;
+         return;
+       }
+       document.getElementById("message").innerHTML = "";
+       year = parseInt(year);
+
+       const currentYear = new Date().getFullYear();
+       const verb = (currentYear < year) ? "will be"
+                  : (currentYear == year) ? "is"
+                  : "was";
+       const notVerb = (currentYear < year) ? "will not be"
+                  : (currentYear == year) ? "is not"
+                  : "was not";
+
+       let afterNow = new Date().getFullYear() < year;
+
+       if (year < 1998) {
+         document.getElementById("result").innerHTML = `the year ${year} AD is prehistory`;
+         return;
+       } else if (year == 1998 || year == 2003 || ((year - 2011) % 3 == 0)) {
+         document.getElementById("result").innerHTML = `the year ${year} AD <b>${verb}</b> an ISO C++ release year`;
+         return;
+       } else {
+         document.getElementById("result").innerHTML = `the year ${year} AD <b>${notVerb}</b> an ISO C++ release year`;
+         return;
+       }
+     }
+    </script>
+</html>
