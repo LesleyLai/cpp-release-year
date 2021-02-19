@@ -44,8 +44,6 @@
                   : (currentYear == year) ? "is not"
                   : "was not";
 
-       let afterNow = new Date().getFullYear() < year;
-
        if (year < 1998) {
          document.getElementById("result").innerHTML = `the year ${year} AD is prehistory`;
          return;
