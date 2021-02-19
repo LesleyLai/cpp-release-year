@@ -11,6 +11,9 @@
      #result {
        font-size: 32px;
      }
+     #error {
+       color: red;
+     }
     </style>
   </head>
   <body>
@@ -21,7 +24,7 @@
     <p>Click "submit" to see whether the year is an ISO C++ release year.</p>
     <button onclick="submit()">Submit</button>
 
-    <p id="message"></p>
+    <p id="error"></p>
     <p id="result"></p>
     <p>Source at <a href="https://github.com/LesleyLai/cpp-release-year">github.com/LesleyLai/cpp-release-year</a></p>
 
@@ -30,10 +33,10 @@
        document.getElementById("result").innerHTML = "";
        let year = document.getElementById("year").value;
        if(!year.match(/^\d+$/)){
-         document.getElementById("message").innerHTML = `${year} is not a valid year`;
+         document.getElementById("error").innerHTML = `Error: ${year} is not a valid year`;
          return;
        }
-       document.getElementById("message").innerHTML = "";
+       document.getElementById("error").innerHTML = "";
        year = parseInt(year);
 
        const currentYear = new Date().getFullYear();
